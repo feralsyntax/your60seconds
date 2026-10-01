@@ -83,7 +83,7 @@ class Comment(db.Model):
     comment_message = db.Column(db.String(255))
 
     def __repr__(self):
-        return f"Comment : id: {self.id} comment: {self.description}"
+        return f"Comment : id: {self.id} comment: {self.comment_message}"
 
 
 class Upvote(db.Model):
