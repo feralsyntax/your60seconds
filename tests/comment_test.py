@@ -12,7 +12,7 @@ class CommentTest(unittest.TestCase):
         runs before every test
         """
 
-        self.new_comment = Comment('Such a pitch!')
+        self.new_comment = Comment(comment_message='Such a pitch!')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_comment, Comment))
