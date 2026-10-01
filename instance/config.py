@@ -1,3 +1,5 @@
-SECRET_KEY = 'mySecretKey'
-MAIL_USERNAME = 'davinci.monalissa3@gmail.com'
-MAIL_PASSWORD = 'beenieman'
+from decouple import config
+
+SECRET_KEY = config('SECRET_KEY')
+MAIL_USERNAME = config('MAIL_USERNAME')
+MAIL_PASSWORD = config('MAIL_PASSWORD')
