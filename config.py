@@ -8,7 +8,11 @@ class Config:
 
     SECRET_KEY = config('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL').replace(
+        'postgres://',
+        'postgresql://',
+        1,
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
@@ -28,7 +32,11 @@ class ProdConfig(Config):
     production configuration child class
     """
 
-    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL').replace(
+            'postgres://',
+            'postgresql://',
+            1,
+        )
 
     pass
 
