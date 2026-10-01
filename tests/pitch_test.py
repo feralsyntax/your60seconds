@@ -12,7 +12,11 @@ class PitchTest(unittest.TestCase):
         runs before every test
         """
 
-        self.new_pitch = Pitch('A pitch like none other', 'Pitch content here--one or multiple lines', 'general')
+        self.new_pitch = Pitch(
+            pitch_title='A pitch like none other',
+            pitch_content='Pitch content here--one or multiple lines',
+            pitch_category='general'
+        )
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_pitch, Pitch))

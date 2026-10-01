@@ -1,4 +1,4 @@
-import os
+from decouple import config
 
 
 class Config:
@@ -6,9 +6,9 @@ class Config:
     general configuration parent class
     """
 
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = config('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://benie:12345@localhost/sixty'
+    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
@@ -17,10 +17,10 @@ class Config:
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = 'davinci.monalissa3@gmail.com'
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    MAIL_USERNAME = config("MAIL_USERNAME")
+    MAIL_PASSWORD = config("MAIL_PASSWORD")
     SUBJECT_PREFIX = 'thePitcher'
-    SENDER_EMAIL = 'davinci.monalissa3@gmail.com'
+    SENDER_EMAIL = config("MAIL_USERNAME")
 
 
 class ProdConfig(Config):
@@ -28,7 +28,7 @@ class ProdConfig(Config):
     production configuration child class
     """
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL')
 
     pass
 
